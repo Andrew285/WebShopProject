@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace WebShopProject.Models
+namespace WebShop.Models
 {
     public class Category
     {

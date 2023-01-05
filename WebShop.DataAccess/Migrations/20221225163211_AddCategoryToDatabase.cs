@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace WebShopProject.Migrations
+namespace WebShop.Migrations
 {
     public partial class AddCategoryToDatabase : Migration
     {
