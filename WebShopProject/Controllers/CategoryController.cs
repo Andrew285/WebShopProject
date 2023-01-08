@@ -1,22 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using WebShop.DataAccess;
+using WebShop.DataAccess.Repository.IRepository;
 using WebShop.Models;
 
 namespace WebShopProject.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly ApplicationDbContext db;
+        private readonly IUnitOfWork unitOfWork;
 
-        public CategoryController(ApplicationDbContext _db)
+        public CategoryController(IUnitOfWork _unitOfWork)
         {
-            db = _db;
+            unitOfWork = _unitOfWork;
         }
 
         public IActionResult Index()
         {
-            IEnumerable<Category> categoryList = db.Categories;
+            IEnumerable<Category> categoryList = unitOfWork.Category.GetAll();
             return View(categoryList);
         }
 
@@ -37,8 +38,8 @@ namespace WebShopProject.Controllers
             }
             if (ModelState.IsValid)
             {
-                db.Categories.Add(category);
-                db.SaveChanges();
+                unitOfWork.Category.Add(category);
+                unitOfWork.Save();
                 TempData["success"] = "Category created successfully";
                 return RedirectToAction("Index");
             }
@@ -54,7 +55,7 @@ namespace WebShopProject.Controllers
                 return NotFound();
             }
 
-            var categoryFromDb = db.Categories.Find(id);
+            var categoryFromDb = unitOfWork.Category.GetFirstOrDefault(u => u.Id == id);
             
             if(categoryFromDb == null)
             {
@@ -75,8 +76,8 @@ namespace WebShopProject.Controllers
             }
             if (ModelState.IsValid)
             {
-                db.Categories.Update(category);
-                db.SaveChanges();
+                unitOfWork.Category.Update(category);
+                unitOfWork.Save();
                 TempData["success"] = "Category updated successfully";
                 return RedirectToAction("Index");
             }
@@ -92,7 +93,7 @@ namespace WebShopProject.Controllers
                 return NotFound();
             }
 
-            var categoryFromDb = db.Categories.Find(id);
+            var categoryFromDb = unitOfWork.Category.GetFirstOrDefault(u => u.Id == id);
 
             if (categoryFromDb == null)
             {
@@ -107,15 +108,15 @@ namespace WebShopProject.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeletePost(int? id)
         {
-            var categoryFromDb = db.Categories.Find(id);
+            var categoryFromDb = unitOfWork.Category.GetFirstOrDefault(u => u.Id == id);
             if(categoryFromDb == null)
             {
                 return NotFound();
             }
 
 
-            db.Categories.Remove(categoryFromDb);
-            db.SaveChanges();
+            unitOfWork.Category.Remove(categoryFromDb);
+            unitOfWork.Save();
             TempData["success"] = "Category removed successfully";
             return RedirectToAction("Index");
         }

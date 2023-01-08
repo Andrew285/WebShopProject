@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace WebShop.DataAccess.Repository.IRepository
 {
-    interface IRepository<T> where T: class
+    public interface IRepository<T> where T: class
     {
         T GetFirstOrDefault(Expression<Func<T, bool>> filter);
         IEnumerable<T> GetAll();

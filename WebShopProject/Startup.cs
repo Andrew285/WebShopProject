@@ -5,6 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WebShop.DataAccess;
+using WebShop.DataAccess.Repository;
+using WebShop.DataAccess.Repository.IRepository;
 
 namespace WebShopProject
 {
@@ -26,6 +28,7 @@ namespace WebShopProject
                 ));
 
             services.AddControllersWithViews();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             //services.AddRazorPages().AddRazorRuntimeCompilation();
         }
 

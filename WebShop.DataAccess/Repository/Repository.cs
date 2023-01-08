@@ -43,7 +43,7 @@ namespace WebShop.DataAccess.Repository
 
         public void RemoveRange(IEnumerable<T> entities)
         {
-            dbSet.Remove(entity);
+            dbSet.RemoveRange(entities);
         }
     }
 }
