@@ -10,6 +10,7 @@ namespace WebShop.DataAccess.Repository
     public class UnitOfWork : IUnitOfWork
     {
         public ICategoryRepository Category { get; private set; }
+        public ICoverTypeRepository CoverType { get; private set; }
 
         private ApplicationDbContext db;
 
@@ -17,6 +18,7 @@ namespace WebShop.DataAccess.Repository
         {
             db = _db;
             Category = new CategoryRepository(_db);
+            CoverType = new CoverTypeRepository(_db);
         }
 
         public void Save()

@@ -10,8 +10,11 @@ namespace WebShop.Models
     public class CoverType
     {
         [Key]
-        public int Id;
+        public int Id { get; set; }
+
+        [Display(Name="Cover Type")]
         [Required]
-        public string Name;
+        [MaxLength(50)]
+        public string Name { get; set; }
     }
 }

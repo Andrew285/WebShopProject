@@ -6,6 +6,7 @@ using WebShop.Models;
 
 namespace WebShopProject.Controllers
 {
+    [Area("Admin")]
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork unitOfWork;
