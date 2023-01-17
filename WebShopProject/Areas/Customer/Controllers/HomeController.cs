@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Diagnostics;
+using WebShop.DataAccess.Repository.IRepository;
 using WebShop.Models;
+using WebShop.Models.ViewModels;
 
 namespace WebShopProject.Controllers
 {
@@ -10,15 +13,29 @@ namespace WebShopProject.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IUnitOfWork unitOfWork;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IUnitOfWork _unitOfWork)
         {
             _logger = logger;
+            unitOfWork = _unitOfWork;
         }
 
         public IActionResult Index()
         {
-            return View();
+            IEnumerable<Product> productList = unitOfWork.Product.GetAll(includeProperties: "Category,CoverType");
+            return View(productList);
+        }
+
+        public IActionResult Details(int id)
+        {
+            ShoppingCart shoppingCart = new ShoppingCart
+            {
+                Count = 1,
+                Product = unitOfWork.Product.GetFirstOrDefault(u => u.Id == id, includeProperties: "Category,CoverType")
+            };
+
+            return View(shoppingCart);
         }
 
         public IActionResult Privacy()
