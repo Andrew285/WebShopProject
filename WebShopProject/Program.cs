@@ -1,4 +1,3 @@
-
 using WebShop.DataAccess;
 using WebShop.DataAccess.Repository;
 using WebShop.DataAccess.Repository.IRepository;
@@ -42,7 +41,6 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthentication();
-
 app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
