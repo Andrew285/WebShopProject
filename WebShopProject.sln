@@ -1,15 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30907.101
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebShopProject", "WebShopProject\WebShopProject.csproj", "{2670BBAA-35BD-4B66-8B54-1019C1A21B1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebShop.DataAccess", "WebShop.DataAccess\WebShop.DataAccess.csproj", "{3F0EB40B-EA84-4B5F-B4B9-E050B36A7584}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebShop.DataAccess", "WebShop.DataAccess\WebShop.DataAccess.csproj", "{3F0EB40B-EA84-4B5F-B4B9-E050B36A7584}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebShop.Models", "WebShop.Models\WebShop.Models.csproj", "{78084414-4DD4-49F1-80CB-C7845D468759}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebShop.Models", "WebShop.Models\WebShop.Models.csproj", "{78084414-4DD4-49F1-80CB-C7845D468759}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebShop.Utility", "WebShop.Utility\WebShop.Utility.csproj", "{6C74DFBC-BDB5-4223-9F14-9C150AA1E07E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebShop.Utility", "WebShop.Utility\WebShop.Utility.csproj", "{6C74DFBC-BDB5-4223-9F14-9C150AA1E07E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
