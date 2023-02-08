@@ -17,9 +17,16 @@ namespace WebShop.DataAccess.Repository
             db = _db;
         }
 
-        public void Update(ShoppingCart obj)
+        public int DecreamentCount(ShoppingCart shoppingCart, int count)
         {
-            db.ShoppingCarts.Update(obj);
+            shoppingCart.Count -= count;
+            return shoppingCart.Count;
+        }
+
+        public int IncreamentCount(ShoppingCart shoppingCart, int count)
+        {
+            shoppingCart.Count += count;
+            return shoppingCart.Count;
         }
     }
 }
